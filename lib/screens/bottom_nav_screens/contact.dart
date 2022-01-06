@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vibgyor/navigation_drawer.dart';
 
 import '../../main.dart';
+import '../login.dart';
 
 class Contact extends StatefulWidget {
   @override
@@ -21,7 +22,13 @@ class _Contact extends State<Contact> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: LogoMain(),
+          leading: GestureDetector(
+            onTap: (){
+              Login();
+            },
+            child: Icon(Icons.account_circle_outlined,size: 40,),
+          ),
+          title: Image(image: AssetImage('images/logo.png'),width: 70.0,height: 70.0,),
           centerTitle: true,
           backgroundColor: Colors.grey,
         ),

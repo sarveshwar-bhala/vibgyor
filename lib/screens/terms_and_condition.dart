@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:vibgyor/bottom_nav.dart';
 import 'package:vibgyor/main.dart';
@@ -20,18 +19,13 @@ class _TermsAndCondition extends State<TermsAndCondition> {
   TextEditingController panNumber = TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: LogoMain(),
-        centerTitle: true,
-        backgroundColor: Colors.grey,
-      ),
       drawer: NavigationDrawer(),
       resizeToAvoidBottomInset: false,
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Padding(
             padding: EdgeInsets.only(top: 30.0),
@@ -135,7 +129,6 @@ class _TermsAndCondition extends State<TermsAndCondition> {
                   Row(
                     children: [
                       Checkbox(
-
                           value: isOptionalChecked,
                           onChanged: (check) {
                             setState(() {
@@ -157,32 +150,26 @@ class _TermsAndCondition extends State<TermsAndCondition> {
           ),
           Padding(
               padding: EdgeInsets.all(30.0),
-            child: ElevatedButton(
-              onPressed: () {
-                if(isAgreeChecked== true){
-                  Navigator.push(context, MaterialPageRoute(builder: (context){
-                    return BottomNavigation();
-                  }));
-                }else{
-                  // _scaffoldKey.currentState?.showSnackBar(SnackBar(content: Text("Agreeing to the Terms and Conditions is mandatory"),));
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text("Agreeing to the Terms and Conditions is mandatory"),
-                  ));
-                }
-
-              },
-              child: Text(
-                "Next",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-              style: ElevatedButton.styleFrom(
-                onPrimary: Colors.black,
-                primary: Colors.transparent,
-                minimumSize: Size(200, 50),
-              ),
-
-            ),
-          )
+              child: GestureDetector(
+                child: Image(
+                  image: AssetImage('images/next.png'),
+                  width: 170.0,
+                ),
+                onTap: () {
+                  if (isAgreeChecked == true) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return BottomNavigation();
+                    }));
+                  } else {
+// _scaffoldKey.currentState?.showSnackBar(SnackBar(content: Text("Agreeing to the Terms and Conditions is mandatory"),));
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                          "Agreeing to the Terms and Conditions is mandatory"),
+                    ));
+                  }
+                },
+              ))
         ],
       ),
     );

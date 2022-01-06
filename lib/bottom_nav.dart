@@ -3,8 +3,6 @@ import 'dart:io';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:vibgyor/navigation_drawer.dart';
-
-
 import 'main.dart';
 import 'screens/bottom_nav_screens/contact.dart';
 import 'screens/bottom_nav_screens/home.dart';

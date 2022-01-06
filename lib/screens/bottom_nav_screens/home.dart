@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vibgyor/screens/login.dart';
 
 import '../../main.dart';
 import '../../navigation_drawer.dart';
@@ -16,7 +17,13 @@ class _Home extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: LogoMain(),
+        leading: GestureDetector(
+          onTap: (){
+            Login();
+          },
+          child: Icon(Icons.account_circle_outlined,size: 40,),
+        ),
+        title: Image(image: AssetImage('images/logo.png'),width: 70.0,height: 70.0,),
         centerTitle: true,
         backgroundColor: Colors.grey,
       ),

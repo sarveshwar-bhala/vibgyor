@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vibgyor/screens/about_us.dart';
 import 'package:vibgyor/screens/bottom_nav_screens/contact.dart';
 import 'package:vibgyor/screens/bottom_nav_screens/home.dart';
 import 'package:vibgyor/screens/login.dart';
+import 'package:vibgyor/screens/our_Services.dart';
 import 'package:vibgyor/screens/settings.dart';
 
 class NavigationDrawer extends StatelessWidget {
@@ -86,7 +89,7 @@ class NavigationDrawer extends StatelessWidget {
         break;
       case 1:
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => Home()));
+            .push(MaterialPageRoute(builder: (context) => Services()));
         break;
       case 2:
         Navigator.of(context)

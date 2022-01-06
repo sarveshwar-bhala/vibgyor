@@ -5,13 +5,21 @@ class Welcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey,
       body: Container(
+        constraints: BoxConstraints.expand(),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/background.png"),
+            fit: BoxFit.cover,
+          )
+        ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
               child: Padding(
-                padding: EdgeInsets.only(top: 100.0),
+                padding: EdgeInsets.only(right:190,top: 180.0),
                 child: Logo(),
               ),
             ),
@@ -34,8 +42,14 @@ class Welcome extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 250.0, left: 150),
-              child: GetStartedButton(),
+              padding: EdgeInsets.only(top: 190.0, left: 150),
+              child: GestureDetector(
+                child: Image(image: AssetImage('images/button.png'),width: 160.0,),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>TermsAndCondition()));
+
+                },
+              ),
             )
           ],
         ),
@@ -48,6 +62,12 @@ class GetStartedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.transparent,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('images/buttom.png'),
+        )
+      ),
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context)=>TermsAndCondition()));
@@ -70,7 +90,17 @@ class Logo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AssetImage assetImage = AssetImage("images/vibgyor_logo.jfif");
+    AssetImage assetImage = AssetImage("images/logo.png");
+    Image image = Image(image: assetImage,);
+    return Container(padding: EdgeInsets.zero, child: image);
+  }
+}
+
+class Background extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    AssetImage assetImage = const AssetImage("images/background.png");
     Image image = Image(image: assetImage,);
     return Container(padding: EdgeInsets.zero, child: image);
   }

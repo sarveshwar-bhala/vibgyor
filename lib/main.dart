@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vibgyor/bottom_nav.dart';
 import 'package:vibgyor/navigation_drawer.dart';
+import 'package:vibgyor/screens/notification.dart';
+import 'package:vibgyor/screens/payment.dart';
 import 'package:vibgyor/screens/welcome.dart';
 
 void main() {
@@ -32,11 +34,7 @@ class _MyMainPage extends State<MyMainPage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: LogoMain(),
-        centerTitle: true,
-        backgroundColor: Colors.grey,
-      ),
+      backgroundColor: Colors.grey,
       body: Welcome(),
       drawer: NavigationDrawer(),
     );
