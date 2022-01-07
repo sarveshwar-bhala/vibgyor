@@ -23,7 +23,7 @@ class Welcome extends StatelessWidget {
                 child: Logo(),
               ),
             ),
-            Center(
+            const Center(
               child: Padding(
                 padding: EdgeInsets.zero,
                 child: Text(
@@ -32,7 +32,7 @@ class Welcome extends StatelessWidget {
                 ),
               ),
             ),
-            Center(
+            const Center(
               child: Padding(
                 padding: EdgeInsets.zero,
                 child: Text(
@@ -42,9 +42,9 @@ class Welcome extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 190.0, left: 150),
+              padding: const EdgeInsets.only(top: 190.0, left: 150),
               child: GestureDetector(
-                child: Image(image: AssetImage('images/button.png'),width: 160.0,),
+                child: Image(image: const AssetImage('images/button.png'),width: 160.0,),
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>TermsAndCondition()));
 
@@ -63,7 +63,7 @@ class GetStartedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.transparent,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage('images/buttom.png'),
         )
@@ -72,14 +72,14 @@ class GetStartedButton extends StatelessWidget {
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context)=>TermsAndCondition()));
         },
-        child: Text(
+        child: const Text(
           "Get Started",
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
         style: ElevatedButton.styleFrom(
           onPrimary: Colors.black54,
           primary: Colors.grey,
-          minimumSize: Size(200, 50),
+          minimumSize: const Size(200, 50),
         ),
       ),
     );

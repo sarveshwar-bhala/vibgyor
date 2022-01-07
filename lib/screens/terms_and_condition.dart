@@ -27,14 +27,14 @@ class _TermsAndCondition extends State<TermsAndCondition> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(top: 30.0),
             child: Text(
               "Let's get you onboard",
               style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
             ),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(top: 20.0),
             child: Text(
               "provide the required details",
@@ -45,31 +45,40 @@ class _TermsAndCondition extends State<TermsAndCondition> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0),
+            padding: const EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0),
             child: TextField(
               controller: phoneNumber,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               decoration: InputDecoration(
                   labelText: "Mobile Number",
                   hintText: "Mobile Number",
-                  border: OutlineInputBorder(borderRadius: BorderRadius.zero)),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(
+                      width: 3,
+                      style: BorderStyle.none,
+                    )),),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0),
+            padding: const EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0),
             child: TextField(
               controller: panNumber,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               decoration: InputDecoration(
                   labelText: "Pan Number",
-                  hintText: "Pan Number",
-                  border: OutlineInputBorder(borderRadius: BorderRadius.zero)),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(
+                      width: 3,
+                      style: BorderStyle.none,
+                    )),),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 20.0, right: 10.0, left: 10.0),
             child: Container(
-              color: Colors.grey,
+              color: Colors.grey[300],
               child: Column(
                 children: [
                   Row(
@@ -81,16 +90,17 @@ class _TermsAndCondition extends State<TermsAndCondition> {
                               isAgreeChecked = b!;
                             });
                           }),
-                      Text(
+                      const Text(
                         'I agree to the following',
                         style: TextStyle(fontSize: 15.0),
                       )
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.only(top:10.0, left:6.0),
                     child: Row(
-                      children: [
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
                         Icon(Icons.arrow_forward),
                         Expanded(
                           child: Text(
@@ -105,7 +115,7 @@ class _TermsAndCondition extends State<TermsAndCondition> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
-                      children: [
+                      children: const [
                         Icon(Icons.arrow_forward),
                         Expanded(
                           child: Text(
@@ -117,7 +127,7 @@ class _TermsAndCondition extends State<TermsAndCondition> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
-                      children: [
+                      children: const [
                         Icon(Icons.arrow_forward),
                         Expanded(
                           child: Text(
@@ -132,12 +142,12 @@ class _TermsAndCondition extends State<TermsAndCondition> {
                           value: isOptionalChecked,
                           onChanged: (check) {
                             setState(() {
-                              isAgreeChecked = check!;
+                              isOptionalChecked = check!;
                             });
                           }),
                       const Expanded(
                         child: Text(
-                          '(Optional) I would like to receive all improtant '
+                          '(Optional) I would like to receive all important '
                           'communication through whatsapp',
                           style: TextStyle(fontSize: 15.0),
                         ),
@@ -149,9 +159,9 @@ class _TermsAndCondition extends State<TermsAndCondition> {
             ),
           ),
           Padding(
-              padding: EdgeInsets.all(30.0),
+              padding: const EdgeInsets.all(30.0),
               child: GestureDetector(
-                child: Image(
+                child: const Image(
                   image: AssetImage('images/next.png'),
                   width: 170.0,
                 ),
@@ -163,7 +173,7 @@ class _TermsAndCondition extends State<TermsAndCondition> {
                     }));
                   } else {
 // _scaffoldKey.currentState?.showSnackBar(SnackBar(content: Text("Agreeing to the Terms and Conditions is mandatory"),));
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       content: Text(
                           "Agreeing to the Terms and Conditions is mandatory"),
                     ));

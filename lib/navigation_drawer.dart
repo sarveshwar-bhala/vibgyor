@@ -13,49 +13,50 @@ class NavigationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Material(
-        color: Colors.grey,
-        child: ListView(
-          children: [
-            const SizedBox(
-              height: 16,
-            ),
-            buildMenuItem(
-                text: "User id",
-                icon: Icons.account_circle,
-                onClicked: () => selectedItem(context, 0)),
-            const SizedBox(
-              height: 16,
-            ),
-            buildMenuItem(
-                text: "Our Services",
-                icon: Icons.miscellaneous_services,
-                onClicked: () => selectedItem(context, 1)),
-            const SizedBox(
-              height: 16,
-            ),
-            buildMenuItem(
-                text: "Settings",
-                icon: Icons.settings,
-                onClicked: () => selectedItem(context, 2)),
-            const SizedBox(
-              height: 16,
-            ),
-            buildMenuItem(
-                text: "Help & Support",
-                icon: Icons.help_center,
-                onClicked: () => selectedItem(context, 3)),
-            const SizedBox(
-              height: 16,
-            ),
-            buildMenuItem(
-                text: "About us",
-                icon: Icons.accessibility_sharp,
-                onClicked: () => selectedItem(context, 4)),
-          ],
+      elevation: 0,
+        child: Container(
+          color: Colors.grey,
+          child: ListView(
+            children: [
+              const SizedBox(
+                height: 16,
+              ),
+              buildMenuItem(
+                  text: "User id",
+                  icon: Icons.account_circle,
+                  onClicked: () => selectedItem(context, 0)),
+              const SizedBox(
+                height: 16,
+              ),
+              buildMenuItem(
+                  text: "Our Services",
+                  icon: Icons.miscellaneous_services,
+                  onClicked: () => selectedItem(context, 1)),
+              const SizedBox(
+                height: 16,
+              ),
+              buildMenuItem(
+                  text: "Settings",
+                  icon: Icons.settings,
+                  onClicked: () => selectedItem(context, 2)),
+              const SizedBox(
+                height: 16,
+              ),
+              buildMenuItem(
+                  text: "Help & Support",
+                  icon: Icons.help_center,
+                  onClicked: () => selectedItem(context, 3)),
+              const SizedBox(
+                height: 16,
+              ),
+              buildMenuItem(
+                  text: "About us",
+                  icon: Icons.accessibility_sharp,
+                  onClicked: () => selectedItem(context, 4)),
+            ],
+          ),
         ),
-      ),
-    );
+      );
   }
 
   Widget buildMenuItem(

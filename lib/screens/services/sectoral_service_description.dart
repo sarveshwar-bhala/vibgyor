@@ -4,6 +4,8 @@ import 'package:vibgyor/screens/login.dart';
 
 import '../../main.dart';
 import '../../navigation_drawer.dart';
+import '../notification.dart';
+import '../payment.dart';
 
 class SectoralServicesDescription extends StatefulWidget {
   @override
@@ -18,14 +20,28 @@ class _SectoralServicesDescription extends State<SectoralServicesDescription> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: GestureDetector(
-          onTap: (){
-            Login();
-          },
-          child: Icon(Icons.account_circle_outlined,size: 40,),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.account_circle),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
         ),
-        title: Image(image: AssetImage('images/logo.png'),width: 70.0,height: 70.0,),
+        title: const Image(
+          image: AssetImage('images/logo.png'),
+          width: 70.0,
+          height: 70.0,
+        ),
+        actions: <Widget>[
+          IconButton(
+              icon: const Icon(Icons.notifications_active),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return NotificationView();
+                }));
+              }),
+        ],
         centerTitle: true,
+        elevation: 0,
         backgroundColor: Colors.grey,
       ),
       drawer: NavigationDrawer(),
@@ -36,34 +52,34 @@ class _SectoralServicesDescription extends State<SectoralServicesDescription> {
               height: 15,
             ),
             Container(
-                margin: EdgeInsets.all(10.0),
-                color: Colors.grey,
+                margin: const EdgeInsets.all(10.0),
+                color: Colors.grey[200],
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
+                    const Text(
                       "Sectoral Trade",
                       style: TextStyle(
-                          fontSize: 30.0,fontWeight: FontWeight.bold,color: Colors.black
-                      ),
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
                     ),
                     const SizedBox(
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 0.0),
+                            padding: EdgeInsets.only(left: 0.0),
                             child: Text(
-                              " Intraday trades endeavor to benefit "
-                                  "from the daily volatility, direction and trend in the market",
+                              "1 to 3 advises per quarter.",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.normal,
-                                  color: Colors.black
-                              ),
+                                  color: Colors.black),
                             ),
                           ),
                         ),
@@ -73,19 +89,20 @@ class _SectoralServicesDescription extends State<SectoralServicesDescription> {
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 159.0),
+                            padding: EdgeInsets.only(right: 0),
                             child: Text(
-                              "2-3 Trade Ideas daily",
+                              "Advises to invest in the sector in which we "
+                              "find momentum in short to medium term.",
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.normal,
-                                  color: Colors.black
-                              ),
+                                  color: Colors.black),
                             ),
                           ),
                         ),
@@ -94,53 +111,19 @@ class _SectoralServicesDescription extends State<SectoralServicesDescription> {
                     const SizedBox(
                       height: 15,
                     ),
-
                     Row(
-                      children: [
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
-
-                        Text(
-                          "Both in the Cash and Future segment",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.black
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.arrow_forward_ios),
-                        Text(
-                          "No calls in illiquid stocks",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.black
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.arrow_forward_ios),
-
                         Expanded(
                           child: Text(
-                            "Will provide full details like the Segment, Stock"
-                            "Name, CMP, Entry Range, Stop-loss & Target.",
+                            "Will give list of stocks in the sector.Do not "
+                            "provide stock picks or entry, target and stop "
+                            "loss for individual stocks.",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.normal,
-                                color: Colors.black
-                            ),
+                                color: Colors.black),
                           ),
                         ),
                       ],
@@ -149,48 +132,75 @@ class _SectoralServicesDescription extends State<SectoralServicesDescription> {
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
-
-                        Text(
-                          "Key Feature: Excellent Risk Management.",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.black
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.arrow_forward_ios),
-
                         Expanded(
                           child: Text(
-                            "Endeavour to deliver target return of 1% to 1.5% on"
-                              "intraday basis",
+                            "The trader can take position in the sector in "
+                                "individual stock based on his risks profile "
+                                "and weightage in the portfolio",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.normal,
-                                color: Colors.black
-                            ),
+                                color: Colors.black),
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(
-                      height: 100,
+                      height: 15,
                     ),
-                    ElevatedButton(onPressed: (){}, child: Text("Buy Now"))
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Icon(Icons.arrow_forward_ios),
+                        Expanded(
+                          child: Text(
+                            "Typical return exception for the sector move "
+                                "from 5-15%",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Icon(Icons.arrow_forward_ios),
+                        Expanded(
+                          child: Text(
+                            "Key Feature: Unlimited possibility in trading.",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16.0),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Payment()));
+                          },
+                          child: const Text("Buy Now"))
+                    )
                   ],
-                )
-            ),
-
-
+                )),
           ],
         ),
       ),

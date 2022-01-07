@@ -17,14 +17,15 @@ class _Notification extends State<NotificationView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: GestureDetector(
-          onTap: (){
-            Login();
-          },
-          child: Icon(Icons.account_circle_outlined,size: 40,),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.account_circle),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
         ),
         title: Image(image: AssetImage('images/logo.png'),width: 70.0,height: 70.0,),
         centerTitle: true,
+        elevation: 0,
         backgroundColor: Colors.grey,
       ),
       drawer: NavigationDrawer(),

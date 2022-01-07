@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:vibgyor/screens/login.dart';
-import 'package:vibgyor/screens/our_service_description.dart';
+import 'package:vibgyor/screens/services/health_checkup.dart';
+import 'package:vibgyor/screens/services/intra_service_description.dart';
 import 'package:vibgyor/screens/payment.dart';
-import 'package:vibgyor/screens/sectoral_service_description.dart';
-import 'package:vibgyor/screens/swing_service_description.dart';
-
-import '../../main.dart';
+import 'package:vibgyor/screens/services/portfolio_services.dart';
+import 'package:vibgyor/screens/services/positional_services.dart';
+import 'package:vibgyor/screens/services/sectoral_service_description.dart';
+import 'package:vibgyor/screens/services/swing_service_description.dart';
 import '../../navigation_drawer.dart';
+import 'notification.dart';
 
 class Services extends StatefulWidget {
   @override
@@ -21,14 +22,28 @@ class _Services extends State<Services> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: GestureDetector(
-          onTap: (){
-            Login();
-          },
-          child: Icon(Icons.account_circle_outlined,),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.account_circle),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
         ),
-        title: LogoMain(),
+        title: const Image(
+          image: AssetImage('images/logo.png'),
+          width: 70.0,
+          height: 70.0,
+        ),
+        actions: <Widget>[
+          IconButton(
+              icon: const Icon(Icons.notifications_active),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return NotificationView();
+                }));
+              }),
+        ],
         centerTitle: true,
+        elevation: 0,
         backgroundColor: Colors.grey,
       ),
       drawer: NavigationDrawer(),
@@ -39,80 +54,144 @@ class _Services extends State<Services> {
               height: 15,
             ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>IntraServicesDescription()));
-
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const IntraServicesDescription
+                          ()));
               },
               child: Container(
-                  margin: EdgeInsets.all(20.0),
-                  color: Colors.grey,
+                  margin: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(20.0),
+                  color: Colors.grey[300],
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(
-                        "Intraday Trade",
+                      const Text(
+                        "IntraDay Trade",
                         style: TextStyle(
-                          fontSize: 30.0,fontWeight: FontWeight.bold,color: Colors.black
-                        ),
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
                       ),
                       const SizedBox(
                         height: 15,
                       ),
-                      Text(
+                      const Text(
                         "2-3 Trade advices per day",
                         style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black
-                        ),
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black),
                       ),
                       const SizedBox(
                         height: 15,
                       ),
-                      ElevatedButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Payment()));
-
-                      }, child: Text("Buy Now"))
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Payment()));
+                          },
+                          child: const Text("Buy Now"))
                     ],
-                  )
-              ),
+                  )),
             ),
-
+            const SizedBox(
+              height: 15,
+            ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>SwingServicesDescription()));
-
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SwingServicesDescription()));
               },
               child: Container(
-                  margin: EdgeInsets.all(20.0),
-                  color: Colors.grey,
+                  margin: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(20.0),
+                  color: Colors.grey[300],
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(
+                      const Text(
                         "Swing Trade",
                         style: TextStyle(
-                            fontSize: 30.0,fontWeight: FontWeight.bold,color: Colors.black
-                        ),
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
                       ),
                       const SizedBox(
                         height: 15,
                       ),
-                      Text(
+                      const Text(
                         "2-3 Trade advices per day",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.normal,
-                            color: Colors.black
-                        ),
+                            color: Colors.black),
                       ),
                       const SizedBox(
                         height: 15,
                       ),
-                      ElevatedButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Payment()));
-
-                      }, child: Text("Buy Now"))
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Payment()));
+                          },
+                          child: const Text("Buy Now"))
+                    ],
+                  )),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SectoralServicesDescription()));
+              },
+              child: Container(
+                  margin: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(20.0),
+                  color: Colors.grey[300],
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const Text(
+                        "Sectoral Trade",
+                        style: TextStyle(
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      const Text(
+                        "2-3 Trade advices per day",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Payment()));
+                          },
+                          child: const Text("Buy Now"))
                     ],
                   )),
             ),
@@ -121,176 +200,142 @@ class _Services extends State<Services> {
             ),
             GestureDetector(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>SectoralServicesDescription()));
-
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const PositionalServices()));
               },
               child: Container(
-                  margin: EdgeInsets.all(20.0),
-                  color: Colors.grey,
+                  margin: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(20.0),
+                  color: Colors.grey[300],
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(
-                        "Sectoral Trade",
+                      const Text(
+                        "Positional Trade",
                         style: TextStyle(
-                            fontSize: 30.0,fontWeight: FontWeight.bold,color: Colors.black
-                        ),
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
                       ),
                       const SizedBox(
                         height: 15,
                       ),
-                      Text(
+                      const Text(
                         "2-3 Trade advices per day",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.normal,
-                            color: Colors.black
-                        ),
+                            color: Colors.black),
                       ),
                       const SizedBox(
                         height: 15,
                       ),
-                      ElevatedButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Payment()));
-
-                      }, child: Text("Buy Now"))
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Payment()));
+                          },
+                          child: const Text("Buy Now"))
                     ],
                   )),
             ),
             const SizedBox(
               height: 15,
             ),
-            Container(
-                margin: EdgeInsets.all(20.0),
-                color: Colors.grey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      "Positional Trade",
-                      style: TextStyle(
-                          fontSize: 30.0,fontWeight: FontWeight.bold,color: Colors.black
+            GestureDetector(
+              onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const PortfolioServices()));
+              },
+              child: Container(
+                  margin: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(20.0),
+                  color: Colors.grey[300],
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const Text(
+                        "Portfolio Ideas",
+                        style: TextStyle(
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      "2-3 Trade advices per day",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black
+                      const SizedBox(
+                        height: 15,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    ElevatedButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Payment()));
-
-                    }, child: Text("Buy Now"))
-                  ],
-                )),
+                      const Text(
+                        "2-3 Trade advices per day",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Payment()));
+                          },
+                          child: const Text("Buy Now"))
+                    ],
+                  )),
+            ),
             const SizedBox(
               height: 15,
             ),
-            Container(
-                margin: EdgeInsets.all(20.0),
-                color: Colors.grey,
-                child:Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      "PortFoloio Ideas",
-                      style: TextStyle(
-                          fontSize: 30.0,fontWeight: FontWeight.bold,color: Colors.black
+            GestureDetector(
+              onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const HealthCheckUp()));
+              },
+              child: Container(
+                  margin: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(20.0),
+                  color: Colors.grey[300],
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const Text(
+                        "PortFolio",
+                        style: TextStyle(
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      "2-3 Trade advices per day",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black
+                      const SizedBox(
+                        height: 15,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    ElevatedButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Payment()));
-
-                    }, child: Text("Buy Now"))
-                  ],
-                )),
+                      const Text(
+                        "2-3 Trade advices per day",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      ElevatedButton(onPressed: () {},
+                          child: const Text("Buy Now"))
+                    ],
+                  )),
+            ),
             const SizedBox(
               height: 15,
             ),
-            Container(
-                margin: EdgeInsets.all(20.0),
-                color: Colors.grey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      "PortFolio",
-                      style: TextStyle(
-                          fontSize: 30.0,fontWeight: FontWeight.bold,color: Colors.black
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      "2-3 Trade advices per day",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    ElevatedButton(onPressed: (){}, child: Text("Buy Now"))
-                  ],
-                )),
-            const SizedBox(
-              height: 15,
-            ),
-            Container(
-                margin: EdgeInsets.all(20.0),
-                color: Colors.grey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      "Intraday Trade",
-                      style: TextStyle(
-                          fontSize: 30.0,fontWeight: FontWeight.bold,color: Colors.black
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      "2-3 Trade advices per day",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    ElevatedButton(onPressed: (){}, child: Text("Buy Now"))
-                  ],
-                )),
           ],
         ),
       ),

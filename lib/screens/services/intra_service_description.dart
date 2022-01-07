@@ -1,31 +1,45 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vibgyor/screens/login.dart';
+import '../../../navigation_drawer.dart';
+import '../notification.dart';
+import '../payment.dart';
 
-import '../../main.dart';
-import '../../navigation_drawer.dart';
+class IntraServicesDescription extends StatefulWidget {
+  const IntraServicesDescription({Key? key}) : super(key: key);
 
-class SwingServicesDescription extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _SwingServicesDescription();
+    return _IntraServicesDescription();
   }
 }
 
-class _SwingServicesDescription extends State<SwingServicesDescription> {
+class _IntraServicesDescription extends State<IntraServicesDescription> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: GestureDetector(
-          onTap: (){
-            Login();
-          },
-          child: Icon(Icons.account_circle_outlined,size: 40,),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.account_circle),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
         ),
-        title: Image(image: AssetImage('images/logo.png'),width: 70.0,height: 70.0,),
+        title: const Image(
+          image: AssetImage('images/logo.png'),
+          width: 70.0,
+          height: 70.0,
+        ),
+        actions: <Widget>[
+          IconButton(
+              icon: const Icon(Icons.notifications_active),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return NotificationView();
+                }));
+              }),
+        ],
         centerTitle: true,
+        elevation: 0,
         backgroundColor: Colors.grey,
       ),
       drawer: NavigationDrawer(),
@@ -36,35 +50,36 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
               height: 15,
             ),
             Container(
-                margin: EdgeInsets.all(10.0),
-                color: Colors.grey,
+                margin: const EdgeInsets.all(10.0),
+                color: Colors.grey[200],
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
-                      "Swing Trade",
-                      style: TextStyle(
-                          fontSize: 30.0,fontWeight: FontWeight.bold,color: Colors.black
+                    const Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        "IntraDay Trade",
+                        style: TextStyle(
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
                       ),
                     ),
                     const SizedBox(
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
                         Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 0.0),
-                            child: Text(
-                              " Intraday trades endeavor to benefit "
-                                  "from the daily volatility, direction and trend in the market",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.black
-                              ),
-                            ),
+                          child: Text(
+                            " IntraDay trades endeavor to benefit "
+                            "from the daily volatility, direction and trend in the market",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black),
                           ),
                         ),
                       ],
@@ -73,19 +88,18 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 159.0),
+                            padding: EdgeInsets.only(right: 159.0),
                             child: Text(
                               "2-3 Trade Ideas daily",
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.normal,
-                                  color: Colors.black
-                              ),
+                                  color: Colors.black),
                             ),
                           ),
                         ),
@@ -94,18 +108,15 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
                     const SizedBox(
                       height: 15,
                     ),
-
                     Row(
-                      children: [
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
-
                         Text(
                           "Both in the Cash and Future segment",
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.normal,
-                              color: Colors.black
-                          ),
+                              color: Colors.black),
                         ),
                       ],
                     ),
@@ -113,15 +124,14 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
                         Text(
                           "No calls in illiquid stocks",
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.normal,
-                              color: Colors.black
-                          ),
+                              color: Colors.black),
                         ),
                       ],
                     ),
@@ -129,9 +139,9 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
-
                         Expanded(
                           child: Text(
                             "Will provide full details like the Segment, Stock"
@@ -139,8 +149,7 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.normal,
-                                color: Colors.black
-                            ),
+                                color: Colors.black),
                           ),
                         ),
                       ],
@@ -149,16 +158,15 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
-
                         Text(
-                          "Key Feature: Excellent Risk Management.",
+                          "Key Feature: Excellent Risk \nManagement.",
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.normal,
-                              color: Colors.black
-                          ),
+                              color: Colors.black),
                         ),
                       ],
                     ),
@@ -166,31 +174,36 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
-
                         Expanded(
                           child: Text(
                             "Endeavour to deliver target return of 1% to 1.5% on"
-                              "intraday basis",
+                            "intraDay basis",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.normal,
-                                color: Colors.black
-                            ),
+                                color: Colors.black),
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(
-                      height: 100,
+                      height: 60,
                     ),
-                    ElevatedButton(onPressed: (){}, child: Text("Buy Now"))
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16.0),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Payment()));
+                          },
+                          child: const Text("Buy Now"))
+                    )
                   ],
-                )
-            ),
-
-
+                )),
           ],
         ),
       ),

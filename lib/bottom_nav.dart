@@ -46,7 +46,7 @@ class _BottomNavigation extends State<BottomNavigation> {
           backgroundColor: Colors.transparent,
           items: items,
           index: index,
-          height: 60,
+          height: 45,
           color: Colors.grey,
           onTap: (index)=> setState(() => this.index = index),
         ),

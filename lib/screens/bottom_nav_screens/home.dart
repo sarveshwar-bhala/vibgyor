@@ -3,6 +3,7 @@ import 'package:vibgyor/screens/login.dart';
 
 import '../../main.dart';
 import '../../navigation_drawer.dart';
+import '../notification.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -17,14 +18,28 @@ class _Home extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: GestureDetector(
-          onTap: (){
-            Login();
-          },
-          child: Icon(Icons.account_circle_outlined,size: 40,),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.account_circle),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
         ),
-        title: Image(image: AssetImage('images/logo.png'),width: 70.0,height: 70.0,),
+        title: const Image(
+          image: AssetImage('images/logo.png'),
+          width: 70.0,
+          height: 70.0,
+        ),
+        actions: <Widget>[
+          IconButton(
+              icon: const Icon(Icons.notifications_active),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return NotificationView();
+                }));
+              }),
+        ],
         centerTitle: true,
+        elevation: 0,
         backgroundColor: Colors.grey,
       ),
       drawer: NavigationDrawer(),
@@ -43,7 +58,7 @@ class _Home extends State<Home> {
               height: 15,
             ),
             Container(
-                margin: EdgeInsets.all(20.0),
+                margin: const EdgeInsets.all(20.0),
                 color: Colors.grey,
                 child: buildMenuItem(
                     text: "Swing Trade", icon: Icons.find_in_page_rounded)),
@@ -51,7 +66,7 @@ class _Home extends State<Home> {
               height: 15,
             ),
             Container(
-                margin: EdgeInsets.all(20.0),
+                margin: const EdgeInsets.all(20.0),
                 color: Colors.grey,
                 child: buildMenuItem(
                     text: "Sectoral Trade", icon: Icons.find_in_page_rounded)),
@@ -59,7 +74,7 @@ class _Home extends State<Home> {
               height: 15,
             ),
             Container(
-                margin: EdgeInsets.all(20.0),
+                margin: const EdgeInsets.all(20.0),
                 color: Colors.grey,
                 child: buildMenuItem(
                     text: "Positional Trade",
@@ -68,7 +83,7 @@ class _Home extends State<Home> {
               height: 15,
             ),
             Container(
-                margin: EdgeInsets.all(20.0),
+                margin: const EdgeInsets.all(20.0),
                 color: Colors.grey,
                 child: buildMenuItem(
                     text: "Portfolio Trade", icon: Icons.find_in_page_rounded)),
@@ -76,7 +91,7 @@ class _Home extends State<Home> {
               height: 15,
             ),
             Container(
-                margin: EdgeInsets.all(20.0),
+                margin: const EdgeInsets.all(20.0),
                 color: Colors.grey,
                 child: buildMenuItem(
                     text: "Portfolio Health Check Up",
@@ -85,7 +100,7 @@ class _Home extends State<Home> {
               height: 15,
             ),
             Container(
-                margin: EdgeInsets.all(20.0),
+                margin: const EdgeInsets.all(20.0),
                 color: Colors.grey,
                 child: buildMenuItem(
                     text: "IntraDay Trade", icon: Icons.find_in_page_rounded)),
@@ -114,3 +129,14 @@ class _Home extends State<Home> {
     );
   }
 }
+
+/*
+GestureDetector(
+onTap: (){
+Navigator.pushReplacement(context,
+MaterialPageRoute(builder: (context) {
+return NavigationDrawer();
+}));;
+},
+child: const Icon(Icons.account_circle_outlined,size: 40,),
+),*/
