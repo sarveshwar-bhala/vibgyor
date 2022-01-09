@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vibgyor/animation/bouncyanimation.dart';
 import '../../../navigation_drawer.dart';
 import '../notification.dart';
 import '../payment.dart';
@@ -192,16 +193,13 @@ class _IntraServicesDescription extends State<IntraServicesDescription> {
                       height: 60,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 16.0),
-                      child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Payment()));
-                          },
-                          child: const Text("Buy Now"))
-                    )
+                        padding: const EdgeInsets.only(bottom: 16.0),
+                        child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context, BouncyAnimation(widget: Payment()));
+                            },
+                            child: const Text("Buy Now")))
                   ],
                 )),
           ],

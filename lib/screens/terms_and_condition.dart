@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vibgyor/animation/bouncyanimation.dart';
 import 'package:vibgyor/bottom_nav.dart';
 import 'package:vibgyor/main.dart';
 import 'package:vibgyor/navigation_drawer.dart';
@@ -50,14 +51,15 @@ class _TermsAndCondition extends State<TermsAndCondition> {
               controller: phoneNumber,
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               decoration: InputDecoration(
-                  labelText: "Mobile Number",
-                  hintText: "Mobile Number",
+                labelText: "Mobile Number",
+                hintText: "Mobile Number",
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(
                       width: 3,
                       style: BorderStyle.none,
-                    )),),
+                    )),
+              ),
             ),
           ),
           Padding(
@@ -66,13 +68,14 @@ class _TermsAndCondition extends State<TermsAndCondition> {
               controller: panNumber,
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               decoration: InputDecoration(
-                  labelText: "Pan Number",
+                labelText: "Pan Number",
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(
                       width: 3,
                       style: BorderStyle.none,
-                    )),),
+                    )),
+              ),
             ),
           ),
           Padding(
@@ -97,7 +100,7 @@ class _TermsAndCondition extends State<TermsAndCondition> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top:10.0, left:6.0),
+                    padding: const EdgeInsets.only(top: 10.0, left: 6.0),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
@@ -167,10 +170,8 @@ class _TermsAndCondition extends State<TermsAndCondition> {
                 ),
                 onTap: () {
                   if (isAgreeChecked == true) {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return BottomNavigation();
-                    }));
+                    Navigator.push(
+                        context, BouncyAnimation(widget: BottomNavigation()));
                   } else {
 // _scaffoldKey.currentState?.showSnackBar(SnackBar(content: Text("Agreeing to the Terms and Conditions is mandatory"),));
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vibgyor/animation/bouncyanimation.dart';
+import 'package:vibgyor/animation/scaleanimation.dart';
 import 'package:vibgyor/screens/services/health_checkup.dart';
 import 'package:vibgyor/screens/services/intra_service_description.dart';
 import 'package:vibgyor/screens/payment.dart';
@@ -6,8 +8,8 @@ import 'package:vibgyor/screens/services/portfolio_services.dart';
 import 'package:vibgyor/screens/services/positional_services.dart';
 import 'package:vibgyor/screens/services/sectoral_service_description.dart';
 import 'package:vibgyor/screens/services/swing_service_description.dart';
-import '../../navigation_drawer.dart';
-import 'notification.dart';
+import '../../../navigation_drawer.dart';
+import '../notification.dart';
 
 class Services extends StatefulWidget {
   @override
@@ -24,7 +26,7 @@ class _Services extends State<Services> {
       appBar: AppBar(
         leading: Builder(
           builder: (context) => IconButton(
-            icon: Icon(Icons.account_circle),
+            icon: const Icon(Icons.account_circle),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
@@ -55,11 +57,8 @@ class _Services extends State<Services> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const IntraServicesDescription
-                          ()));
+                Navigator.push(context,
+                    ScaleAnimation(widget: const IntraServicesDescription()));
               },
               child: Container(
                   margin: const EdgeInsets.all(10.0),
@@ -104,10 +103,8 @@ class _Services extends State<Services> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SwingServicesDescription()));
+                Navigator.push(context,
+                    ScaleAnimation(widget: SwingServicesDescription()));
               },
               child: Container(
                   margin: const EdgeInsets.all(10.0),
@@ -139,9 +136,7 @@ class _Services extends State<Services> {
                       ElevatedButton(
                           onPressed: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Payment()));
+                                context, BouncyAnimation(widget: Payment()));
                           },
                           child: const Text("Buy Now"))
                     ],
@@ -199,7 +194,7 @@ class _Services extends State<Services> {
               height: 15,
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -247,7 +242,7 @@ class _Services extends State<Services> {
               height: 15,
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -295,7 +290,7 @@ class _Services extends State<Services> {
               height: 15,
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -328,8 +323,8 @@ class _Services extends State<Services> {
                       const SizedBox(
                         height: 15,
                       ),
-                      ElevatedButton(onPressed: () {},
-                          child: const Text("Buy Now"))
+                      ElevatedButton(
+                          onPressed: () {}, child: const Text("Buy Now"))
                     ],
                   )),
             ),

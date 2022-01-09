@@ -29,18 +29,18 @@ class _BottomNavigation extends State<BottomNavigation> {
   Widget build(BuildContext context) {
 
     
-    final items = <Widget>[
-      Icon(Icons.bar_chart,size: 30,),
-      Icon(Icons.home_filled,size: 30,),
-      Icon(Icons.contact_page,size: 30,),
+    final items = <Widget> [
+      const Icon(Icons.bar_chart,size: 30,),
+      const Icon(Icons.home_filled,size: 30,),
+      const Icon(Icons.contact_page,size: 30,),
     ];
 
     return Scaffold(
-
+        extendBody: true,
       body: screens[index],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
-          iconTheme: IconThemeData(color: Colors.white)
+          iconTheme: const IconThemeData(color: Colors.white)
         ),
         child: CurvedNavigationBar(
           backgroundColor: Colors.transparent,

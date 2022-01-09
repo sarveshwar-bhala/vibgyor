@@ -4,19 +4,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vibgyor/screens/about_us.dart';
 import 'package:vibgyor/screens/bottom_nav_screens/contact.dart';
-import 'package:vibgyor/screens/bottom_nav_screens/home.dart';
 import 'package:vibgyor/screens/login.dart';
-import 'package:vibgyor/screens/our_Services.dart';
+import 'package:vibgyor/screens/services/our_Services.dart';
 import 'package:vibgyor/screens/settings.dart';
 
 class NavigationDrawer extends StatelessWidget {
+  const NavigationDrawer({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      elevation: 0,
+    return ClipRRect(
+      borderRadius: BorderRadius.only(
+          topRight: Radius.circular(39), bottomRight: Radius.circular(39)),
+      child: Drawer(
+        elevation: 0,
         child: Container(
           color: Colors.grey,
           child: ListView(
+            padding: EdgeInsets.zero,
             children: [
               const SizedBox(
                 height: 16,
@@ -56,7 +61,8 @@ class NavigationDrawer extends StatelessWidget {
             ],
           ),
         ),
-      );
+      ),
+    );
   }
 
   Widget buildMenuItem(
@@ -80,7 +86,6 @@ class NavigationDrawer extends StatelessWidget {
   }
 
   void selectedItem(BuildContext context, int index) {
-
     Navigator.of(context).pop();
 
     switch (index) {

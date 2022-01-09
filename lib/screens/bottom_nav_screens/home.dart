@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vibgyor/screens/login.dart';
-
-import '../../main.dart';
 import '../../navigation_drawer.dart';
 import '../notification.dart';
 
@@ -16,13 +13,14 @@ class Home extends StatefulWidget {
 class _Home extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(resizeToAvoidBottomInset: true,
+      drawerEnableOpenDragGesture: true,
+
       appBar: AppBar(
         leading: Builder(
           builder: (context) => IconButton(
-            icon: Icon(Icons.account_circle),
-            onPressed: () => Scaffold.of(context).openDrawer(),
-          ),
+              icon: const Icon(Icons.account_circle),
+              onPressed: () => Scaffold.of(context).openDrawer()),
         ),
         title: const Image(
           image: AssetImage('images/logo.png'),
