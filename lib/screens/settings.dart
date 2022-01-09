@@ -2,108 +2,138 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 import '../navigation_drawer.dart';
+import 'notification.dart';
 
 class Settings extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: LogoMain(),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.account_circle),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
+        title: const Image(
+          image: AssetImage('images/logo.png'),
+          width: 70.0,
+          height: 70.0,
+        ),
+        actions: <Widget>[
+          IconButton(
+              icon: const Icon(Icons.notifications_active),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return NotificationView();
+                }));
+              }),
+        ],
         centerTitle: true,
+        elevation: 0,
         backgroundColor: Colors.grey,
       ),
       drawer: NavigationDrawer(),
-      body: Center(
-        child: Column(
-          children: [
-            Text(
-              "Settings",style: TextStyle(
-              fontSize: 40.0,
-              fontWeight: FontWeight.bold
-            ),
-            ),
-            Row(
+      body: Padding(
+        padding: const EdgeInsets.only(top:18.0),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Column(
               children: [
-                Text(
-                    "Change Password",
+                const Text(
+                  "Settings",
                   style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.normal
+                  fontSize: 40.0,
+                  fontWeight: FontWeight.w500
+                ),
+                ),
+                const SizedBox(height: 20,),
+                Row(
+                  children: const [
+                    Text(
+                        "Change Password",
+                      style: TextStyle(
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.normal
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    const Text(
+                        "Notification Pop Up",
+                      style: TextStyle(
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.normal
+                      ),
+                    ),
+                    const SizedBox(width: 100,),
+                    Switch(value: false, onChanged: (value){})
+                  ],
+                ),
+                Row(
+                  children: [
+                    const Text(
+                        "Dark Theme",
+                      style: TextStyle(
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.normal
+                      ),
+                    ),
+                    const SizedBox(width: 180,),
+
+                    Switch(value: false, onChanged: (value){})
+
+                  ],
+                ),
+                Row(
+                  children: [
+                    const Text(
+                        "Save Info",
+                      style: TextStyle(
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.normal
+                      ),
+                    ),
+                    const SizedBox(width: 210,),
+
+                    Switch(value: false, onChanged: (value){})
+
+                  ],
+                ),
+                Row(
+                  children: [
+                    const Text(
+                        "Two Factor Authentication",
+                      style: TextStyle(
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.normal
+                      ),
+                    ),
+                    const SizedBox(width: 25,),
+
+                    Switch(value: false, onChanged: (value){})
+                  ],
+                ),
+                const SizedBox(height: 30,),
+                const Padding(
+                  padding: EdgeInsets.only(right: 270.0),
+                  child: Text(
+                      "FeedBack",
+                    style: TextStyle(
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.normal
+                    ),
+                    textAlign: TextAlign.left,
                   ),
                 ),
               ],
             ),
-            Row(
-              children: [
-                Text(
-                    "Notification Pop Up",
-                  style: TextStyle(
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.normal
-                  ),
-                ),
-                SizedBox(width: 100,),
-                Switch(value: false, onChanged: (value){})
-              ],
-            ),
-            Row(
-              children: [
-                Text(
-                    "Dark Theme",
-                  style: TextStyle(
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.normal
-                  ),
-                ),
-                SizedBox(width: 180,),
+          ),
 
-                Switch(value: false, onChanged: (value){})
-
-              ],
-            ),
-            Row(
-              children: [
-                Text(
-                    "Save Info",
-                  style: TextStyle(
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.normal
-                  ),
-                ),
-                SizedBox(width: 210,),
-
-                Switch(value: false, onChanged: (value){})
-
-              ],
-            ),
-            Row(
-              children: [
-                Text(
-                    "Two Factor Authentication",
-                  style: TextStyle(
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.normal
-                  ),
-                ),
-                SizedBox(width: 25,),
-
-                Switch(value: false, onChanged: (value){})
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 290.0),
-              child: Text(
-                  "FeedBack",
-                style: TextStyle(
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.normal
-                ),
-                textAlign: TextAlign.left,
-              ),
-            ),
-          ],
         ),
-
       ),
     );
   }

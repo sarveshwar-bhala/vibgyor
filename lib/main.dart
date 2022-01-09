@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Vibgyor",
       home: MyMainPage(),
@@ -24,6 +24,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyMainPage extends StatefulWidget{
+  const MyMainPage({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _MyMainPage();
@@ -36,17 +38,19 @@ class _MyMainPage extends State<MyMainPage>{
     return Scaffold(
       backgroundColor: Colors.grey,
       body: Welcome(),
-      drawer: NavigationDrawer(),
+      drawer: const NavigationDrawer(),
     );
   }
 }
 
 
 class LogoMain extends StatelessWidget {
+  const LogoMain({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
-    AssetImage assetImage = AssetImage("images/vibgyor_logo.jfif");
+    AssetImage assetImage = const AssetImage("images/vibgyor_logo.jfif");
     Image image = Image(image: assetImage,width: 70,height: 70,);
     return Container(padding: EdgeInsets.zero, child: image);
   }

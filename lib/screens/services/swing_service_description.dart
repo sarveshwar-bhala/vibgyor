@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vibgyor/screens/login.dart';
 
-import '../../main.dart';
-import '../../navigation_drawer.dart';
+import '../../../main.dart';
+import '../../../navigation_drawer.dart';
+import '../notification.dart';
+import '../payment.dart';
 
 class SwingServicesDescription extends StatefulWidget {
   @override
@@ -18,14 +20,28 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: GestureDetector(
-          onTap: (){
-            Login();
-          },
-          child: Icon(Icons.account_circle_outlined,size: 40,),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.account_circle),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
         ),
-        title: Image(image: AssetImage('images/logo.png'),width: 70.0,height: 70.0,),
+        title: const Image(
+          image: AssetImage('images/logo.png'),
+          width: 70.0,
+          height: 70.0,
+        ),
+        actions: <Widget>[
+          IconButton(
+              icon: const Icon(Icons.notifications_active),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return NotificationView();
+                }));
+              }),
+        ],
         centerTitle: true,
+        elevation: 0,
         backgroundColor: Colors.grey,
       ),
       drawer: NavigationDrawer(),
@@ -36,34 +52,37 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
               height: 15,
             ),
             Container(
-                margin: EdgeInsets.all(10.0),
-                color: Colors.grey,
+                margin: const EdgeInsets.all(10.0),
+                color: Colors.grey[200],
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
+                    const Text(
                       "Swing Trade",
                       style: TextStyle(
-                          fontSize: 30.0,fontWeight: FontWeight.bold,color: Colors.black
-                      ),
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
                     ),
                     const SizedBox(
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 0.0),
+                            padding: EdgeInsets.only(left: 0.0),
                             child: Text(
-                              " Intraday trades endeavor to benefit "
-                                  "from the daily volatility, direction and trend in the market",
+                              "Swing trade is a style of trading that "
+                              "attempts to capture shots to medium term "
+                              "gains in a stock over a period of a few "
+                              "days to several week",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.normal,
-                                  color: Colors.black
-                              ),
+                                  color: Colors.black),
                             ),
                           ),
                         ),
@@ -73,19 +92,21 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 159.0),
+                            padding: const EdgeInsets.only(right: 0),
                             child: Text(
-                              "2-3 Trade Ideas daily",
+                              "It ranges from BTST or STBT to few days. The "
+                              "target are achieved in between 5tp 15 "
+                              "trading sessions",
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.normal,
-                                  color: Colors.black
-                              ),
+                                  color: Colors.black),
                             ),
                           ),
                         ),
@@ -94,18 +115,17 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
                     const SizedBox(
                       height: 15,
                     ),
-
                     Row(
-                      children: [
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
-
                         Text(
-                          "Both in the Cash and Future segment",
+                          "Fundamental, Technical and Market \nPsychology "
+                          "factors(Fund Flow, \nEvents etc.) to be the "
+                          "basics",
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.normal,
-                              color: Colors.black
-                          ),
+                              color: Colors.black),
                         ),
                       ],
                     ),
@@ -113,15 +133,14 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
                         Text(
-                          "No calls in illiquid stocks",
+                          "1-2 Trade advice per week.",
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.normal,
-                              color: Colors.black
-                          ),
+                              color: Colors.black),
                         ),
                       ],
                     ),
@@ -129,18 +148,15 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
-
                         Expanded(
                           child: Text(
-                            "Will provide full details like the Segment, Stock"
-                            "Name, CMP, Entry Range, Stop-loss & Target.",
+                            "Both Cash flow and Future Segment.",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.normal,
-                                color: Colors.black
-                            ),
+                                color: Colors.black),
                           ),
                         ),
                       ],
@@ -149,16 +165,17 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
-
                         Text(
-                          "Key Feature: Excellent Risk Management.",
+                          "Will Provide full details like the \nsegment,"
+                              "Stock Name, CMP, \nEntry Range, stop-loss & "
+                              "Target",
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.normal,
-                              color: Colors.black
-                          ),
+                              color: Colors.black),
                         ),
                       ],
                     ),
@@ -166,31 +183,50 @@ class _SwingServicesDescription extends State<SwingServicesDescription> {
                       height: 15,
                     ),
                     Row(
-                      children: [
+                      children: const [
                         Icon(Icons.arrow_forward_ios),
-
                         Expanded(
                           child: Text(
                             "Endeavour to deliver target return of 1% to 1.5% on"
-                              "intraday basis",
+                            "intraDay basis",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.normal,
-                                color: Colors.black
-                            ),
+                                color: Colors.black),
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(
-                      height: 100,
+                      height: 15,
                     ),
-                    ElevatedButton(onPressed: (){}, child: Text("Buy Now"))
+                    Row(
+                      children: const [
+                        Icon(Icons.arrow_forward_ios),
+                        Expanded(
+                          child: Text(
+                            "Key Feature: Superior Reading of the market pulse",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Payment()));
+                        },
+                        child: const Text("Buy Now"))
                   ],
-                )
-            ),
-
-
+                )),
           ],
         ),
       ),
